@@ -1,1 +1,2 @@
-while sleep 1; date +"%T"; done
+#!/bin/bash
+ date +"%T"
