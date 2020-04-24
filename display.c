@@ -37,5 +37,23 @@ void display_minutes(int minutes, pi_framebuffer_t *dev) {
 
 }
 void display_seconds(int seconds, pi_framebuffer_t *dev) {
+    if(seconds >= 32) {
+        bm->pixel[5][7]=RED;
+        seconds -= 32;
+    } if(seconds >= 16) {
+        bm->pixel[4][7]=RED;
+        seconds -= 16;
+    } if(seconds >= 8) {
+        bm->pixel[3][7]=RED;
+        seconds -= 8;
+    } if(seconds >= 4) {
+        bm->pixel[2][7]=RED;
+        seconds -= 4;
+    } if(seconds >= 2) {
+        bm->pixel[1][7]=RED;
+        seconds -= 2;
+    } if(seconds >= 1) {
+        bm->pixel[0][7]=RED;
+        seconds -= 1;
 
 }
