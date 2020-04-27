@@ -1,14 +1,38 @@
-#include "display.h"
+#include <display.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int main(void){
-	pi_framebuffer_t *fb=getFrameBuffer();
-	fprint(stderr,"Going to print a sigma!\n");
 
-	display_sigma(fb);
-	fprintf(stderr,"Did it!\n");
+int main() {
+    pi_framebuffer_t *dev = getFrameBuffer();
 
-	freeFrameBuffer(fb);
-	fprintf(stderr,"Exiting.\n");
+    char time [9];
+    char hours [3];
+    char minutes [3];
+    char seconds [3];
 
-	return 0;
+    int hr;
+    int min;
+    int sec;
 
+    while(true) {
+        scanf("%s", time);
+        
+        hours[0] = time[0];
+        hours[1] = time[1];
+
+        minutes[0] = time[3];
+        minutes[1] = time[4];
+
+        seconds[0] = time[6];
+        seconds[1] = time[7];
+        
+        hr = atoi(hours);
+        min = atoi(minutes);
+        sec = atoi(seconds);
+
+        display_time(hr,min,sec,dev);
+
+    }
+}
