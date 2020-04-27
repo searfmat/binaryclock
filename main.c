@@ -3,7 +3,7 @@
 
 
 int main() {
-    pi_framebuffer_t dev = getFrameBuffer();
+    pi_framebuffer_t *dev = getFrameBuffer();
 
     char time [9];
     char hours [3];
@@ -14,7 +14,7 @@ int main() {
     int min;
     int sec;
 
-    while(true) {
+    while(1) {
         scanf("%s", time);
         
         hours[0] = time[0];
