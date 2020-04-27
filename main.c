@@ -1,11 +1,9 @@
-#include <display.h>
+#include "display.h"
 #include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 
 int main() {
-    pi_framebuffer_t *dev = getFrameBuffer();
+    pi_framebuffer_t dev = getFrameBuffer();
 
     char time [9];
     char hours [3];
