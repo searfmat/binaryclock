@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "sense.h"
+#include <sense.h>
 
 #define WHITE 0xFFFF
 #define GREEN 0x07E0
@@ -15,6 +15,8 @@ void display_time(int hours, int minutes, int seconds, pi_framebuffer_t *dev) {
     display_hours(hours, dev);
     display_minutes(minutes, dev);
     display_seconds(seconds, dev);
+    freeFrameBuffer(fb);
+
 }
 
 void display_colons(pi_framebuffer_t *dev) {
