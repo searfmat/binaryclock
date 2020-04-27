@@ -6,7 +6,7 @@
 
 int main() {
     pi_framebuffer_t *dev = getFrameBuffer();
-
+	
     char time [9];
     char hours [3];
     char minutes [3];
@@ -35,4 +35,6 @@ int main() {
         display_time(hr,min,sec,dev);
 
     }
+ return 0;
+
 }

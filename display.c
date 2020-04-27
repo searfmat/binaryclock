@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <sense.h>
+#include "sense.h"
+#include "display.h"
 
 #define WHITE 0xFFFF
 #define GREEN 0x07E0
@@ -11,16 +12,19 @@
 
 void display_time(int hours, int minutes, int seconds, pi_framebuffer_t *dev) {
     //displays the time on device dev using the below helpers.
+    sense_fb_bitmap_t *bm=dev->bitmap;
     display_colons(dev);
     display_hours(hours, dev);
     display_minutes(minutes, dev);
     display_seconds(seconds, dev);
-    freeFrameBuffer(fb);
+    freeFrameBuffer(dev);
 
 }
 
 void display_colons(pi_framebuffer_t *dev) {
     //draws the colons
+   sense_fb_bitmap_t *bm=dev->bitmap;
+   
     bm->pixel[1][2]=WHITE;
     bm->pixel[1][3]=WHITE;
     bm->pixel[1][5]=WHITE;
@@ -39,6 +43,8 @@ void display_colons(pi_framebuffer_t *dev) {
     bm->pixel[5][6]=WHITE;
 }
 void display_hours(int hours, pi_framebuffer_t *dev) {
+   sense_fb_bitmap_t *bm=dev->bitmap;
+
     if(hours >= 16) {
         bm->pixel[4][1]=BLUE;
         hours -= 16;
@@ -54,10 +60,12 @@ void display_hours(int hours, pi_framebuffer_t *dev) {
     } if(hours >= 1) {
         bm->pixel[0][1]=BLUE;
         hours -= 1;
-
+    }
 }
 void display_minutes(int minutes, pi_framebuffer_t *dev) {
-    if(minutes >= 32) {
+      sense_fb_bitmap_t *bm=dev->bitmap;
+
+     if(minutes >= 32) {
         bm->pixel[5][4]=GREEN;
         minutes -= 32;
     } if(minutes >= 16) {
@@ -75,10 +83,12 @@ void display_minutes(int minutes, pi_framebuffer_t *dev) {
     } if(minutes >= 1) {
         bm->pixel[0][4]=GREEN;
         minutes -= 1;
-
+}
 }
 void display_seconds(int seconds, pi_framebuffer_t *dev) {
-    if(seconds >= 32) {
+   sense_fb_bitmap_t *bm=dev->bitmap;
+ 
+   if(seconds >= 32) {
         bm->pixel[5][7]=RED;
         seconds -= 32;
     } if(seconds >= 16) {
@@ -96,5 +106,5 @@ void display_seconds(int seconds, pi_framebuffer_t *dev) {
     } if(seconds >= 1) {
         bm->pixel[0][7]=RED;
         seconds -= 1;
-
+	}
 }
