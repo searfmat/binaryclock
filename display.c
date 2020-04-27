@@ -18,9 +18,9 @@ void display_time(int hours, int minutes, int seconds, pi_framebuffer_t *dev) {
     display_hours(hours, dev);
     display_minutes(minutes, dev);
     display_seconds(seconds, dev);
-        clearFrameBuffer(dev,BLACK);
-    
-}
+    sleep(1);
+    clearFrameBuffer(dev,BLACK);
+    }
 
 void display_colons(pi_framebuffer_t *dev) {
     //draws the colons
