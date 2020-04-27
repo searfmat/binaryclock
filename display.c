@@ -18,8 +18,7 @@ void display_time(int hours, int minutes, int seconds, pi_framebuffer_t *dev) {
     display_hours(hours, dev);
     display_minutes(minutes, dev);
     display_seconds(seconds, dev);
-    sleep(1);
-    clearFrameBuffer(dev,BLACK);
+        clearFrameBuffer(dev,BLACK);
     
 }
 
