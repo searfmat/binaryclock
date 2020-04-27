@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 
+
 int main() {
     pi_framebuffer_t *dev = getFrameBuffer();
 	
@@ -18,7 +19,7 @@ int main() {
 
     while(1) {
         scanf("%s", time);
-        
+      
         hours[0] = time[0];
         hours[1] = time[1];
 

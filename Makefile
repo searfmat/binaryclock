@@ -1,4 +1,4 @@
-INCLUDE: -l ~/include
+INCLUDE: -I ~/include -lsense
 
 LDFLAGS:= -L ~/lib -lsense -lm
 
@@ -9,6 +9,9 @@ clock: main.o display.o
 clean:
 	rm -f *.o clock
 main.o: main.c display.h
-	cc -c main.c -l ~/include
+	cc -c main.c -I ~/include -lsense
 display.o: display.c display.h
-	cc -c display.c -l ~/include
+	cc -c display.c -I ~/include -lsense
+run:
+	bash clock.sh | ./clock
+
