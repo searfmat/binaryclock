@@ -3,6 +3,7 @@
 #include "sense.h"
 #include "display.h"
 
+#define BLACK 0x0000
 #define WHITE 0xFFFF
 #define GREEN 0x07E0
 #define RED 0xF800
@@ -17,8 +18,9 @@ void display_time(int hours, int minutes, int seconds, pi_framebuffer_t *dev) {
     display_hours(hours, dev);
     display_minutes(minutes, dev);
     display_seconds(seconds, dev);
-    freeFrameBuffer(dev);
-
+    sleep(1);
+    clearFrameBuffer(dev,BLACK);
+    
 }
 
 void display_colons(pi_framebuffer_t *dev) {
