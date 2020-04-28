@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+#define BLACK 0x0000
 
 int main() {
     pi_framebuffer_t *dev = getFrameBuffer();
@@ -19,7 +19,9 @@ int main() {
 
     while(1) {
         scanf("%s", time);
-      
+        if(strlen(time) < 3) {
+		break;
+	}
         hours[0] = time[0];
         hours[1] = time[1];
 
@@ -36,6 +38,8 @@ int main() {
         display_time(hr,min,sec,dev);
 
     }
+ clearFrameBuffer(dev,BLACK);
+
  return 0;
 
 }
